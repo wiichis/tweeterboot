@@ -1,6 +1,6 @@
 import credentials
 import tweepy
-import schedule
+import time
 
 auth = tweepy.OAuthHandler(credentials.API_Key, credentials.API_Secret_Key)
 auth.set_access_token(credentials.Acces_token, credentials.Acces_token_secret)
@@ -12,11 +12,13 @@ api = tweepy.API(auth)
 # for tweet in public_tweets:
 #     print(f'{tweet.user.screen_name}:\n{tweet.text}\n{"*"*60}')
 
+hastag = input('Que deseas buscar hoy?' )
+
 def get_tweets():
     id = None
     count = 0
-    while count <= 1000:
-        tweets = api.search(q='#Bitcoin', lang='es', tweet_mode='extended', max_id=id)
+    while count <= 6000:
+        tweets = api.search(q=hastag, lang='es', tweet_mode='extended', max_id=id)
         for tweet in tweets:
             if tweet.full_text.startswith('RT'):
                 count += 1
@@ -27,13 +29,13 @@ def get_tweets():
             count += 1
         id = tweet.id
         print(count)
+        time.sleep(5)
     
 def run():
     get_tweets()
 
 if __name__=='__main__':
-    schedule.every(6).minutes.do(run)
+    run()
     
 
-    while True:
-        schedule.run_pending()
+  
