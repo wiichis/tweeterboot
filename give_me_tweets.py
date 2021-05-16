@@ -5,7 +5,7 @@ import time
 auth = tweepy.OAuthHandler(credentials.API_Key, credentials.API_Secret_Key)
 auth.set_access_token(credentials.Acces_token, credentials.Acces_token_secret)
 
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # #Para imprimir tu timeline en consola
 # public_tweets = api.home_timeline()
@@ -17,7 +17,7 @@ hastag = input('Que deseas buscar hoy?' )
 def get_tweets():
     id = None
     count = 0
-    while count <= 6000:
+    while count <= 7000:
         tweets = api.search(q=hastag, lang='es', tweet_mode='extended', max_id=id)
         for tweet in tweets:
             if tweet.full_text.startswith('RT'):
@@ -29,7 +29,6 @@ def get_tweets():
             count += 1
         id = tweet.id
         print(count)
-        time.sleep(5)
     
 def run():
     get_tweets()
