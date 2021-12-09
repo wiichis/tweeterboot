@@ -2,7 +2,7 @@ exclude_words= ['el', 'la', 'los', 'las', 'un', 'una', 'unos', 'al', 'del', 'lo'
                 'y', 'e', 'o', 'u', 'de', 'a', 'en', 'que', 'es', 'por', 'para', 'con',
                 'se', 'su', 'les', 'me', 'q', 'te', 'pero', 'mi', 'ya', 'cuando', 'como', 
                 'estoy', 'voy', 'porque', 'he', 'son', 'solo', 'tengo', 'muy', '.', '-', 
-                '|', 'd', 'no', 'si', 'yo', 'ha', "?"]
+                '|', 'd', 'no', 'si', 'yo', 'ha', "?",","]
 
 
 top_words = []
