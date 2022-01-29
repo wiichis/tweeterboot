@@ -1,5 +1,6 @@
 import credentials
 import tweepy
+import subprocess
 
 
 auth = tweepy.OAuthHandler(credentials.API_Key, credentials.API_Secret_Key)
@@ -31,8 +32,9 @@ def get_tweets():
         print(count)
     
 def run():
+    subprocess.run(['rm', 'data_tweets.txt' ]) 
     get_tweets()
-
+    
 if __name__=='__main__':
     run()
     
